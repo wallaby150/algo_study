@@ -1,14 +1,18 @@
-N = int(input())
-s_length = int(input())
-S = input()
+N = int(input())    # N+1개의 "I"와 N개의 "O"가 번갈아 들어가는 문자열이 대상이다.
+s_length = int(input())     # 탐색하려는 문자열의 길이
+S = input()                 # 탐색하려는 문자열
 
-text = "IO" * N + "I"
+text = "IO" * N + "I"       # 주어진 N으로 찾으려는 문자열을 직접 만든다.
 
-count = 0
-for i in range(s_length-len(text)+1):
-    if S[i] == "O":
+count = 0                   # 주어진 문자열에 탐색 문자열이 몇 번 들어가는지 체크할 변수.
+for i in range(s_length-len(text)+1):   # 0부터 마지막으로 탐색 문자열이 포개질 수 있는 인덱스까지
+    if S[i] == "O":                     # 찾는 문자열은 반드시 "I"로부터 시작하므로 패스
         pass
-    elif S[i:i+len(text)] == text:
-        count += 1
+    elif S[i:i+len(text)] == text:      # 그게 아니라 해당 인덱스부터 시작하는 문자열이 탐색 대상과 겹치면
+        count += 1                      # 카운트 한다.
 
 print(count)
+
+# 하지만 시간 문제로 부분성공(50점이 나온다.)
+# O(N^2)이 소요된다.
+# 매번 문자열을 2N + 1 길이만큼 슬라이싱하기 때문이다.
