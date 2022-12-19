@@ -45,7 +45,7 @@ for i in range(1, 10):
     # 치또이(머리 7개) 확인
     p7 = 0
     for j in range(1, 10):
-        if pp[j] == 2: p7 += 1
+        if not pp[j] % 2: p7 += pp[j] // 2
     if p7 == 7: rst.append(i)
     # 아니면 완성 되는지 확인
     elif chkpae(pp): rst.append(i)
